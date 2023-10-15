@@ -80,6 +80,1032 @@ Huxley et al (2020) discusses about the data wrangling processes such as data ex
 <p>Huxley et al (2020) Big data architectures - Azure Architecture Center. [online] learn.microsoft.com. Available at: https://learn.microsoft.com/en-us/azure/architecture/data-guide/big-data/.</p>
 
 									<h4>Unit 3</h4>
+
+
+
+In [23]:
+from bs4 import BeautifulSoup
+In [24]:
+import requests
+In [30]:
+url = "https://www.thinkful.com/blog/tag/data-science/"
+
+page = requests.get(url)
+
+soup = BeautifulSoup(page.text,'html')
+In [31]:
+print(soup)
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<title>Data Science - Thinkful</title>
+<meta content="True" name="HandheldFriendly"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="https://www.thinkful.com/blog" name="tf-base-url"/>
+<link href="/blog/assets/thinkful.ico?v=b69c13b33e" rel="shortcut icon"/>
+<link href="//fast.fonts.net/cssapi/1687f214-249f-4805-8f46-2d1ef3144500.css" rel="stylesheet" type="text/css"/>
+<link href="//fonts.googleapis.com/css?family=Merriweather:300,600,300italic,600italic" rel="stylesheet" type="text/css"/>
+<link href="/blog/assets/css/nav.css?v=b69c13b33e" rel="stylesheet" type="text/css"/>
+<link href="/blog/assets/css/screen.css?v=b69c13b33e" rel="stylesheet" type="text/css"/>
+<link href="/blog/assets/css/iconfont.css?v=b69c13b33e" rel="stylesheet" type="text/css"/>
+<script charset="UTF-8" data-domain-script="bd4020d4-45a9-40cd-94f1-b6ac0a85beb3" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" type="text/javascript"></script>
+<script type="text/javascript">function OptanonWrapper() { }</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="/blog/assets/js/config.js?v=b69c13b33e" type="text/javascript"></script>
+<script src="/blog/assets/js/lead-capture.js?v=b69c13b33e" type="text/javascript"></script>
+<script src="/blog/assets/js/caret.js?v=b69c13b33e" type="text/javascript"></script>
+<script src="/blog/assets/js/mql-capture.js?v=b69c13b33e" type="text/javascript"></script>
+<script src="/blog/assets/js/navbar.js?v=b69c13b33e" type="text/javascript"></script>
+<link href="/blog/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
+<link href="https://www.thinkful.com/blog/tag/data-science/" rel="canonical"/>
+<meta content="no-referrer-when-downgrade" name="referrer"/>
+<link href="https://www.thinkful.com/blog/tag/data-science/page/2/" rel="next"/>
+<meta content="Thinkful" property="og:site_name"/>
+<meta content="website" property="og:type"/>
+<meta content="Data Science - Thinkful" property="og:title"/>
+<meta content="https://www.thinkful.com/blog/tag/data-science/" property="og:url"/>
+<meta content="2020-01-13T22:03:49.000Z" property="article:modified_time"/>
+<meta content="https://www.facebook.com/thinkful" property="article:publisher"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="Data Science - Thinkful" name="twitter:title"/>
+<meta content="https://www.thinkful.com/blog/tag/data-science/" name="twitter:url"/>
+<meta content="@thinkful" name="twitter:site"/>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Series",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Thinkful",
+        "logo": "https://s3.amazonaws.com/tf-nightingale/2019/09/TF_2019_Logo_01--1-.png"
+    },
+    "url": "https://www.thinkful.com/blog/tag/data-science/",
+    "name": "Data Science",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.thinkful.com/blog/"
+    }
+}
+    </script>
+<script src="/blog/public/ghost-sdk.min.js?v=b69c13b33e"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "32f5499e1b60"
+});
+</script>
+<meta content="Ghost 2.14" name="generator"/>
+<link href="https://www.thinkful.com/blog/rss/" rel="alternate" title="Thinkful" type="application/rss+xml"/>
+<meta content="nkoll4p35e" property="x-tf-segmentio-token"/>
+<meta content="Data Science - Thinkful" name="page-meta-title"/>
+<!-- Qualified -->
+<script>
+    (function(w,q){w['QualifiedObject']=q;w[q]=w[q]||function(){
+    (w[q].q=w[q].q||[]).push(arguments)};})(window,'qualified')
+    </script>
+<!-- End Qualified -->
+</head>
+<body class="tag-template tag-data-science list">
+<div class="navbar-container">
+<div class="navbar">
+<div class="splash-nav">
+<a class="splash-nav-home-link" href="/">
+<ul class="splash-nav-primary">
+<li class="splash-nav-item"><img alt="Thinkful a Chegg Service" class="splash-nav-thinkful-logo" src="https://tf-shoebill-prod.imgix.net/img/thinkful_a_chegg_service_white.f00e454.svg"/></li>
+</ul>
+</a>
+<ul class="splash-nav-secondary">
+<li class="splash-nav-item splash-nav-item__courses splash-nav-item__long" id="new-course-dropdown">
+<a class="splash-nav-item-link" data-qa-label="nav-courses" href="#" onclick="return false;">Courses</a>
+<ul class="splash-nav-dropdown splash-nav-courses">
+<div class="splash-nav-section">
+<ul class="splash-nav-nested">
+<li><a class="splash-nav-nested-item color-engineering" data-qa-label="nav-courses-web-development" href="/bootcamp/web-development/">
+                    Software Engineering
+                  </a>
+</li>
+<li><a class="splash-nav-nested-item color-data-science" data-qa-label="nav-courses-data-science" href="/bootcamp/data-science/">
+                    Data Science
+                  </a>
+</li>
+<li><a class="splash-nav-nested-item color-data-analytics" data-qa-label="nav-courses-data-analytics" href="/bootcamp/data-analytics/">
+                    Data Analytics
+                  </a>
+</li>
+<li><a class="splash-nav-nested-item color-design" data-qa-label="nav-courses-ux-ui" href="/bootcamp/ux-ui/">
+                    UX / UI Design
+                  </a>
+</li>
+<li><a class="splash-nav-nested-item color-digital-marketing" data-qa-label="nav-courses-digital-marketing" href="/bootcamp/digital-marketing/">
+                    Digital Marketing
+                  </a>
+</li>
+<li><a class="splash-nav-nested-item color-technical-project-management" data-qa-label="nav-courses-technical-project-management" href="/bootcamp/technical-project-management/">
+                    Technical Project Management
+                  </a>
+</li>
+</ul>
+</div>
+</ul>
+</li>
+<li class="splash-nav-item splash-nav-item__long"><a class="splash-nav-item-link no-dropdown" href="/how-we-work/">How we work</a></li>
+<li class="splash-nav-item"><a class="splash-nav-item-link no-dropdown" href="/outcomes/">Outcomes</a></li>
+<li class="splash-nav-item splash-nav-item__long">
+<a class="splash-nav-item-link" href="#" onclick="return false;">Communities</a>
+<ul class="splash-nav-dropdown splash-nav-communities">
+<div class="splash-nav-section">
+<li class="splash-program-header">West</li>
+<ul class="splash-nav-nested">
+<li><a class="splash-nav-nested-item" href="/bootcamp/los-angeles-coding-bootcamp/">Los Angeles</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/portland-coding-bootcamp/">Portland</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/san-diego-coding-bootcamp/">San Diego</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/san-francisco-coding-bootcamp/">San Francisco</a>
+</li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/seattle-coding-bootcamp/">Seattle</a></li>
+</ul>
+</div>
+<div class="splash-nav-section">
+<li class="splash-program-header">Southeast</li>
+<ul class="splash-nav-nested">
+<li><a class="splash-nav-nested-item" href="/bootcamp/atlanta-coding-bootcamp/">Atlanta</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/miami-coding-bootcamp/">Miami</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/orlando-coding-bootcamp/">Orlando</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/raleigh-coding-bootcamp/">Raleigh</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/tampa-coding-bootcamp/">Tampa</a></li>
+</ul>
+</div>
+<div class="splash-nav-section">
+<li class="splash-program-header">Northeast</li>
+<ul class="splash-nav-nested">
+<li><a class="splash-nav-nested-item" href="/bootcamp/boston-coding-bootcamp/">Boston</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/philadelphia-coding-bootcamp/">Philadelphia</a>
+</li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/washington-dc-coding-bootcamp/">Washington DC</a>
+</li>
+</ul>
+</div>
+<div class="splash-nav-section">
+<li class="splash-program-header">Southwest</li>
+<ul class="splash-nav-nested">
+<li><a class="splash-nav-nested-item" href="/bootcamp/austin-coding-bootcamp/">Austin</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/dallas-coding-bootcamp/">Dallas</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/houston-coding-bootcamp/">Houston</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/phoenix-coding-bootcamp/">Phoenix</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/salt-lake-city-coding-bootcamp/">Salt Lake
+                    City</a></li>
+</ul>
+</div>
+<div class="splash-nav-section">
+<li class="splash-program-header">Midwest</li>
+<ul class="splash-nav-nested">
+<li><a class="splash-nav-nested-item" href="/bootcamp/chicago-coding-bootcamp/">Chicago</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/denver-coding-bootcamp/">Denver</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/detroit-coding-bootcamp/">Detroit</a></li>
+<li><a class="splash-nav-nested-item" href="/bootcamp/minneapolis-coding-bootcamp/">Minneapolis</a></li>
+</ul>
+</div>
+</ul>
+</li>
+<li class="splash-nav-item">
+<a class="splash-nav-item-link" href="/blog/">Blog</a>
+<ul class="splash-nav-dropdown splash-nav-blog">
+<div class="splash-nav-section">
+<ul class="splash-nav-nested">
+<li><a class="splash-nav-nested-item" href="/blog/tag/software-engineering/">Software Engineering</a>
+</li>
+<li><a class="splash-nav-nested-item" href="/blog/tag/data-science/">Data Science</a></li>
+<li><a class="splash-nav-nested-item" href="/blog/tag/data-analytics/">Data Analytics</a></li>
+<li><a class="splash-nav-nested-item" href="/blog/tag/ux-ui-design/">UX / UI Design</a></li>
+<li><a class="splash-nav-nested-item" href="/blog/tag/digital-marketing/">Digital Marketing</a></li>
+<li><a class="splash-nav-nested-item" href="/blog/tag/technical-project-management/">Technical Project
+                    Management</a></li>
+<li><a class="splash-nav-nested-item" href="/blog/tag/thinkful-news/">Thinkful News</a></li>
+<li><a class="splash-nav-nested-item" href="/blog/tag/student-stories/">Student Stories</a></li>
+</ul>
+</div>
+</ul>
+</li>
+<li class="splash-nav-item"><a class="splash-nav-item-link no-dropdown" href="https://dashboard.thinkful.com">Sign in</a></li>
+<li class="splash-nav-cta splash-nav-contact-request">
+<div class="color-wrapper">
+<button class="splash-nav-call-request button__secondary color-4" data-qa-label="enroll-cta-request-call">
+<a href="/?call=true">Contact Us</a>
+</button>
+</div>
+</li>
+<li class="splash-nav-item splash-nav-item__mobile splash-nav-item__menu"><a class="splash-nav-item-link" href="#">
+            Menu
+          </a>
+</li>
+</ul>
+</div>
+<div class="mobile-nav">
+<ul class="" id="mobile-nav-top">
+<li class="mobile-nav-section-item">
+<a href="#" onclick="return false;">Courses</a>
+<div class="mobile-nav-arrow icon icon__arrow-down-white"></div>
+</li>
+<ul class="hide-mobile-nav-component" data-expanded-class="show-mobile-nav-courses" id="mobile-nav-courses__nested">
+<a class="mobile-nav-link" href="/bootcamp/web-development/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">
+              Software Engineering
+            </li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/data-science/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">
+              Data Science
+            </li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/data-analytics/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">
+              Data Analytics
+            </li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/ux-ui/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">
+              UX / UI Design
+            </li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/digital-marketing/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">
+              Digital Marketing
+            </li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/product-management/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">
+              Technical Project Management
+            </li>
+</a>
+</ul>
+<li class="mobile-nav-section-item"><a href="/how-we-work/">How We Work</a></li>
+<li class="mobile-nav-section-item"><a href="/outcomes/">Outcomes</a></li>
+<li class="mobile-nav-section-item">
+<a href="#" onclick="return false;">Communities</a>
+<div class="mobile-nav-arrow icon icon__arrow-down-white"></div>
+</li>
+<ul class="hide-mobile-nav-component" data-expanded-class="show-mobile-nav-communities" id="mobile-nav-communities__nested">
+<div class="mobile-nav-full-width">
+<li class="mobile-nav-section-item mobile-nav-back">
+<div class="icon icon__arrow-left"></div>
+<a href="#" onclick="return false;">Communities</a>
+</li>
+</div>
+<div class="mobile-nav-half-width">
+<div class="mobile-nav-region">
+<li class="mobile-nav-section-title">West</li>
+<a class="mobile-nav-link" href="/bootcamp/los-angeles-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Los Angeles</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/portland-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Portland</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/san-diego-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">San Diego</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/san-francisco-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">San Francisco</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/seattle-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Seattle</li>
+</a>
+</div>
+<div class="mobile-nav-region">
+<li class="mobile-nav-section-title">Southeast</li>
+<a class="mobile-nav-link" href="/bootcamp/atlanta-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Atlanta</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/miami-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Miami</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/orlando-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Orlando</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/raleigh-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Raleigh</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/tampa-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Tampa</li>
+</a>
+</div>
+<div class="mobile-nav-region">
+<li class="mobile-nav-section-title">Northeast</li>
+<a class="mobile-nav-link" href="/bootcamp/boston-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Boston</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/philadelphia-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Philadelphia</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/washington-dc-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Washington DC</li>
+</a>
+</div>
+<div class="mobile-nav-region">
+<li class="mobile-nav-section-title">Southwest</li>
+<a class="mobile-nav-link" href="/bootcamp/austin-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Austin</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/dallas-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Dallas</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/houston-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Houston</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/phoenix-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Phoenix</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/salt-lake-city-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Salt Lake City</li>
+</a>
+</div>
+<div class="mobile-nav-region">
+<li class="mobile-nav-section-title">Midwest</li>
+<a class="mobile-nav-link" href="/bootcamp/chicago-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Chicago</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/denver-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Denver</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/detroit-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Detroit</li>
+</a>
+<a class="mobile-nav-link" href="/bootcamp/minneapolis-coding-bootcamp/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Minneapolis</li>
+</a>
+</div>
+</div>
+</ul>
+<li class="mobile-nav-section-item">
+<a href="/blog/">Blog</a>
+<div class="mobile-nav-arrow icon icon__arrow-down-white"></div>
+</li>
+<ul class="hide-mobile-nav-component" data-expanded-class="show-mobile-nav-blog" id="mobile-nav-blog__nested">
+<div class="mobile-nav-half-width">
+<div class="mobile-nav-region">
+<a class="mobile-nav-link" href="/blog/tag/software-engineering/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Software Engineering</li>
+</a>
+<a class="mobile-nav-link" href="/blog/tag/data-science/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Data Science</li>
+</a>
+<a class="mobile-nav-link" href="/blog/tag/data-analytics/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Data Analytics</li>
+</a>
+<a class="mobile-nav-link" href="/blog/tag/ux-ui-design/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">UX / UI Design</li>
+</a>
+<a class="mobile-nav-link" href="/blog/tag/technical-project-management/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Technical Project Management</li>
+</a>
+<a class="mobile-nav-link" href="/blog/tag/thinkful-news/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Thinkful News</li>
+</a>
+<a class="mobile-nav-link" href="/blog/tag/student-stories/">
+<li class="mobile-nav-section-item mobile-nav-section-item__nested">Student Stories</li>
+</a>
+</div>
+</div>
+</ul>
+<li class="mobile-nav-section-item"><a href="https://dashboard.thinkful.com">Sign in</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="tag-page">
+<div class="tag-header-container">
+<div class="tag-header">
+<div class="tag-info">
+<h2>Data Science</h2>
+<p>The scoop on 'the world's sexiest profession' including tips for launching a career, how to tell stories with data, and the state of the job market.</p>
+</div>
+<div class="newsletter-signup-container">
+<div class="newsletter-signup">
+<div class="blog-lead-capture">
+<h4>Get learning resources sent to your inbox.</h4>
+<form class="js-blog-lead-capture">
+<label>Your Email</label>
+<input id="email-input" name="email" required="" type="email"/>
+<input id="stage-input" name="stage" type="hidden" value="Subscribed to newsletter"/>
+<input type="submit" value="SIGN-UP"/>
+</form>
+<p>Ready to get started at Thinkful?</p>
+<a href="https://www.thinkful.com/?getstarted=true">Explore our courses.</a>
+</div>
+<div class="blog-lead-capture-success">
+<h4>Thanks for subscribing!</h4>
+</div>
+<div class="blog-lead-capture-failure">
+<h4>An error occured, please email <a href="mailto:support@thinkful.com">support@thinkful.com</a></h4>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="latest-stories-band-container">
+<div class="latest-stories-container">
+<h2 class="blog-latest-stories-heading">Latest Stories</h2>
+<h3 class="blog-latest-stories-sub-heading">See what else is new</h3>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science">
+<a href="/blog/data-science-interview-questions/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Interview Questions" src="https://s3.amazonaws.com/tf-nightingale/2021/07/DS_interview_questions_20210719_blog_post.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-interview-questions/">
+<h2 class="blog-latest-stories-header">Data Science Interview Questions</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-interview-questions/">
+<p class="blog-latest-stories-preview">Learn how to tackle behavioral and technical questions, and ultimately breeze through even the most intense data science interview.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science">
+<a href="/blog/data-science-podcasts/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Podcasts" src="https://s3.amazonaws.com/tf-nightingale/2020/10/Data-Science-Podcasts-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-podcasts/">
+<h2 class="blog-latest-stories-header">Data Science Podcasts</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-podcasts/">
+<p class="blog-latest-stories-preview">If you’re interested in staying up to date with the latest developments in the field, a data science podcast might be the perfect way to catch the latest.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-tools">
+<a href="/blog/data-science-tools/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Tools" src="https://s3.amazonaws.com/tf-nightingale/2020/10/Data-Science-Tools-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-tools/">
+<h2 class="blog-latest-stories-header">Data Science Tools</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-tools/">
+<p class="blog-latest-stories-preview">A big part of becoming a data scientist is understanding how to utilize these tools meaningfully in your role.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-education-paths">
+<a href="/blog/learn-data-science/">
+<div class="blog-latest-stories-image">
+<img alt="Learn Data Science" src="https://s3.amazonaws.com/tf-nightingale/2020/09/Learn-Data-Science-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/learn-data-science/">
+<h2 class="blog-latest-stories-header">Learn Data Science</h2>
+</a>
+<a class="no-hover-underline" href="/blog/learn-data-science/">
+<p class="blog-latest-stories-preview">This fast-growing discipline helps companies to analyze raw data, and provides valuable information about consumers, the market, and employees.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-schools">
+<a href="/blog/data-science-school/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science School" src="https://s3.amazonaws.com/tf-nightingale/2020/09/Data-Science-School-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-school/">
+<h2 class="blog-latest-stories-header">Data Science School</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-school/">
+<p class="blog-latest-stories-preview">We took a broad look at the opportunities out there for data scientists, along with an overview of the key skills and concepts you’ll need to master on your mission to becoming a data expert.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-job-seekers">
+<a href="/blog/data-science-jobs/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Jobs" src="https://s3.amazonaws.com/tf-nightingale/2020/09/Data-Science-Jobs-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-jobs/">
+<h2 class="blog-latest-stories-header">Data Science Jobs</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-jobs/">
+<p class="blog-latest-stories-preview">We’ll list a few job search platforms and take you through some data scientist interview questions to help you get hired as a data scientist.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-resumes">
+<a href="/blog/data-scientist-resume/">
+<div class="blog-latest-stories-image">
+<img alt="Data Scientist Resume" src="https://s3.amazonaws.com/tf-nightingale/2020/09/Data-Scientist-Resume-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-scientist-resume/">
+<h2 class="blog-latest-stories-header">Data Scientist Resume</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-scientist-resume/">
+<p class="blog-latest-stories-preview">If you’ve already got the skills you need to get hired, we’re here to help you through the next step: crafting the perfect data science resume.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-skills">
+<a href="/blog/data-scientist-skills/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Skills" src="https://s3.amazonaws.com/tf-nightingale/2020/09/Data-Scientist-Skills-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-scientist-skills/">
+<h2 class="blog-latest-stories-header">Data Science Skills</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-scientist-skills/">
+<p class="blog-latest-stories-preview">In this article, we’ll discuss what you need to learn to become a data scientist.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-training-programs">
+<a href="/blog/data-science-training/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Training" src="https://s3.amazonaws.com/tf-nightingale/2020/09/Data-Science-Training-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-training/">
+<h2 class="blog-latest-stories-header">Data Science Training</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-training/">
+<p class="blog-latest-stories-preview">We’ve outlined some of the skills you need to learn as well as your course options to help you start your new career.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-entry-level-jobs">
+<a href="/blog/entry-level-data-scientist-2/">
+<div class="blog-latest-stories-image">
+<img alt="Entry Level Jobs in Data Science" src="https://s3.amazonaws.com/tf-nightingale/2020/09/Entry-level-data-scientist-bloghero.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/entry-level-data-scientist-2/">
+<h2 class="blog-latest-stories-header">Entry Level Jobs in Data Science</h2>
+</a>
+<a class="no-hover-underline" href="/blog/entry-level-data-scientist-2/">
+<p class="blog-latest-stories-preview">If you’re considering putting your programming skills and analytical mindset to work, let’s walk through the steps of securing an entry-level data science position.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-finding-a-job">
+<a href="/blog/how-to-get-a-job-in-data-science/">
+<div class="blog-latest-stories-image">
+<img alt="How to Get A Job in Data Science" src="https://s3.amazonaws.com/tf-nightingale/2020/08/get-hired-as-a-data-scientist.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/how-to-get-a-job-in-data-science/">
+<h2 class="blog-latest-stories-header">How to Get A Job in Data Science</h2>
+</a>
+<a class="no-hover-underline" href="/blog/how-to-get-a-job-in-data-science/">
+<p class="blog-latest-stories-preview">This article looks at the role of a data scientist, the different specializations within the field, and the skills needed to get hired.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-degrees-worth-it">
+<a href="/blog/are-data-science-degrees-worth-it/">
+<div class="blog-latest-stories-image">
+<img alt="Are Data Science Degrees Worth It?" src="https://s3.amazonaws.com/tf-nightingale/2020/08/Are-data-science-degrees-worth-it-Blog.png"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/are-data-science-degrees-worth-it/">
+<h2 class="blog-latest-stories-header">Are Data Science Degrees Worth It?</h2>
+</a>
+<a class="no-hover-underline" href="/blog/are-data-science-degrees-worth-it/">
+<p class="blog-latest-stories-preview">Selecting the right program for your specific needs can be a tough decision, so we’re to help you consider your options.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-internships">
+<a href="/blog/data-science-internships/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Internships" src="https://s3.amazonaws.com/tf-nightingale/2020/08/Data-science-internships-Blog.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-internships/">
+<h2 class="blog-latest-stories-header">Data Science Internships</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-internships/">
+<p class="blog-latest-stories-preview">If you have a passion for big data and are looking to kickstart your career in data science, read on.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-certificates">
+<a href="/blog/data-science-certificates/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Certificates" src="https://s3.amazonaws.com/tf-nightingale/2020/08/Blog-Header-100--26-.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-certificates/">
+<h2 class="blog-latest-stories-header">Data Science Certificates</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-certificates/">
+<p class="blog-latest-stories-preview">Certifications validate your skills, which further increases your chances of getting hired. Here we  list the top certification programs to help you thrive as a data scientist.</p>
+</a>
+</article>
+</div>
+<div class="blog-latest-stories-container no-hover-underline">
+<article class="post tag-data-science tag-cover-letters">
+<a href="/blog/data-science-cover-letter/">
+<div class="blog-latest-stories-image">
+<img alt="Data Science Cover Letter" src="https://s3.amazonaws.com/tf-nightingale/2020/07/Blog-Header-100--6-.jpg"/>
+</div>
+</a>
+<p class="blog-latest-stories-tags"><a href="/blog/tag/data-science/">Data Science</a></p>
+<a href="/blog/data-science-cover-letter/">
+<h2 class="blog-latest-stories-header">Data Science Cover Letter</h2>
+</a>
+<a class="no-hover-underline" href="/blog/data-science-cover-letter/">
+<p class="blog-latest-stories-preview">A cover letter is sometimes even more important than a resume. So we’re going to guide you through the process of creating a strong data science cover letter.</p>
+</a>
+</article>
+</div>
+</div>
+</div>
+<nav class="pagination-nav">
+<span class="btn disabled">
+<span aria-hidden="true" class="icon-navigateleft"></span>
+      Newer
+    </span>
+<span>1 of 3</span>
+<a class="btn nav next no-hover-underline" href="/blog/tag/data-science/page/2/">
+      Older
+      <span aria-hidden="true" class="icon-navigateright"></span>
+</a>
+</nav>
+</div>
+<div class="hub-menu">
+<div class="hub-menu-content">
+<h3>What are you interested in?</h3>
+<ul>
+<li><a href="/blog/tag/bootcamps/">Bootcamps</a></li>
+<li><a href="/blog/tag/coding/">Coding</a></li>
+<li><a href="/blog/tag/computer-science/">Computer Science</a></li>
+<li><a href="/blog/tag/data-science/">Data Science</a></li>
+<li><a href="/blog/tag/data-analytics/">Data Analytics</a></li>
+<li><a href="/blog/tag/digital-marketing/">Digital Marketing</a></li>
+<li><a href="/blog/tag/front-end-developer/">Front End Developer</a></li>
+<li><a href="/blog/tag/full-stack-developer/">Full Stack Developer</a></li>
+<li><a href="/blog/tag/product-design/">Product Design</a></li>
+<li><a href="/blog/tag/technical-project-management/">Project Management</a></li>
+<li><a href="/blog/tag/software-engineering/">Software Engineering</a></li>
+<li><a href="/blog/tag/tech/">Tech</a></li>
+<li><a href="/blog/tag/web-design/">Web Design</a></li>
+<li><a href="/blog/tag/web-development/">Web Development</a></li>
+<li><a href="/blog/tag/ux-ui-design/">UX/UI</a></li>
+</ul>
+</div>
+</div>
+<footer class="footer-container">
+<div class="site-links">
+<div class="footer-logo-column">
+<div class="footer-logo">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg id="Layer_1" style="enable-background:new 0 0 24.4 24;" version="1.1" viewbox="0 0 24.4 24" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
+<title>Thinkful Logo Black@2x</title>
+<desc>Created with Sketch.</desc>
+<polygon id="Fill-1" points="0,0 0,9.2 7.6,9.2 7.6,17 9.9,17 9.9,6.9 2.4,6.9 2.4,2.3 17.3,2.3 17.3,0 "></polygon>
+<polygon id="Fill-2" points="22,0 22,6.8 14.5,6.8 14.5,21.6 7.6,21.6 7.6,23.9 16.8,23.9 16.8,9.2 24.4,9.2 24.4,0 "></polygon>
+</svg>
+</div>
+</div>
+<div class="footer-column">
+<h4 class="footer-heading">Courses</h4>
+<h5><a class="footer-link" href="/bootcamp/web-development/">Software Engineering</a></h5>
+<h5><a class="footer-link" href="/bootcamp/data-science/">Data Science</a></h5>
+<h5><a class="footer-link" href="/bootcamp/data-analytics/">Data Analytics</a></h5>
+<h5><a class="footer-link" href="/bootcamp/ux-ui/flexible/">UX / UI Design</a></h5>
+<h5><a class="footer-link" href="/bootcamp/digital-marketing/">Digital Marketing</a></h5>
+<h5><a class="footer-link" href="/bootcamp/technical-project-management/">Technical Project Management</a></h5>
+</div>
+<div class="footer-column">
+<h4 class="footer-heading">Information</h4>
+<h5><a class="footer-link" href="/how-we-work/">How We Work</a></h5>
+<h5><a class="footer-link" href="/outcomes/">Outcomes</a></h5>
+<h5><a class="footer-link" href="/hire-our-grads/">Hire Our Grads</a></h5>
+<h5><a class="footer-link" href="https://getstarted.thinkful.com/regulatory-information">Course Catalog</a></h5>
+<h5><a class="footer-link" href="/webinars/">Webinars</a></h5>
+<h5><a class="footer-link" href="/learn/">Learning Center</a></h5>
+<h5><a class="footer-link" href="/bootcamps/">Bootcamp Finder</a></h5>
+<h5><a class="footer-link" href="https://getstarted.thinkful.com/regulatory-information">Regulatory
+          Information</a></h5>
+</div>
+<div class="footer-column">
+<h4 class="footer-heading">Company</h4>
+<h5><a class="footer-link" href="/about/">About Us</a></h5>
+<h5><a class="footer-link" href="/terms-of-service/">Terms of Use</a></h5>
+<h5><a class="footer-link" href="/privacy-policy/">Privacy Policy</a></h5>
+<h5><a class="footer-link" href="/about/#careers">Careers</a></h5>
+<h5><a class="footer-link" href="/press/">Press</a></h5>
+<h5><a class="footer-link" href="/faq/">FAQs</a></h5>
+<h5><a class="footer-link" href="/reviews/">Reviews</a></h5>
+</div>
+<div class="footer-column">
+<h4 class="footer-heading">Follow</h4>
+<h5><a class="footer-link" href="https://twitter.com/thinkful">Twitter</a></h5>
+<h5><a class="footer-link" href="https://www.facebook.com/thinkful/">Facebook</a></h5>
+<h5><a class="footer-link" href="https://www.instagram.com/thinkfulhq/">Instagram</a></h5>
+<h5><a class="footer-link" href="/blog/">Thinkful Blog</a></h5>
+</div>
+<div>
+<h6 class="copyright">© <noscript>2020</noscript>
+<script>document.write(new Date().getFullYear());</script> Thinkful, Inc.
+      </h6>
+</div>
+</div>
+</footer>
+<!-- 
+        <a href="https://www.thinkful.com/blog" id="blog_badge">
+            <span style="background-image: url('https://s3.amazonaws.com/tf-nightingale/2019/09/TF_2019_Logo_01--1-.png');">Thinkful</span>
+        </a>
+     -->
+<script>
+        function no_schema_links() {
+            var links = document.querySelectorAll('.js-remove-domain-schema');
+            if (links) {
+                for (i = 0; i < links.length; ++i) {
+                    var link = links[i],
+                        text = link.innerHTML,
+                        no_schema = text.replace(/.*?:\/\//g, "");
+                    link.innerHTML = no_schema;
+                }
+            }
+        }
+
+        window.onload = function () {
+            no_schema_links();
+        }
+    </script>
+<!-- Ghost button styles -->
+<style>.btn-link.disabled,.btn-link[disabled],.btn.disabled,.btn[disabled],fieldset[disabled] .btn{opacity:.65;cursor:not-allowed;pointer-events:none;box-shadow:none}.btn{margin-bottom:0;padding:9px 15px;border:1px solid #dfe1e3;background:#fff;border-radius:4px;color:#808284;text-transform:uppercase;text-shadow:none;white-space:nowrap;letter-spacing:1px;font-size:1.1rem;line-height:1.428571429;transition:color .2s ease,background .2s ease,border-color .2s ease;font-family:'Open Sans',sans-serif;cursor:pointer;text-decoration:none}.btn:focus,.btn:hover{border-color:#5ba4e5;color:#308ddf}.btn-link:active,.btn-link:focus,.btn-link:hover{text-decoration:underline}.btn.active:focus,.btn:active:focus,.btn:focus{outline:dotted thin;outline:-webkit-focus-ring-color auto 0;outline-offset:-2px}.btn.active,.btn:active{outline:0;background-image:none;box-shadow:inset 0 1px 2px rgba(0,0,0,.2)}.btn-hover-green:active,.btn-hover-green:focus,.btn-hover-green:hover{border-color:#9fbb58;color:#859f41}.btn-blue{border-color:#308ddf;background:#5ba4e5;color:#fff}.btn-blue:active,.btn-blue:focus,.btn-blue:hover{border-color:#1e73be;background:#308ddf;color:#fff}.btn-green{border-color:#859f41;background:#9fbb58;color:#fff}.btn-green:active,.btn-green:focus,.btn-green:hover{border-color:#667b32;background:#859f41;color:#fff}.btn-red{border-color:#d1341f;background:#e25440;color:#fff}.btn-red:active,.btn-red:focus,.btn-red:hover{border-color:#a42919;background:#d1341f;color:#fff}.btn-link,.btn-link:active,.btn-link:focus,.btn-link:hover{border-color:transparent;background:0 0;color:#5ba4e5}.btn-link.disabled,.btn-link[disabled]{color:#b2b2b2}.btn-minor:active,.btn-minor:focus,.btn-minor:hover{border-color:#c1c1c1;background:#fff;box-shadow:none;color:#808284}.btn-lg{padding:12px 18px;border-radius:4px;font-size:1.4rem;line-height:1.33}.btn-sm{padding:7px 10px;border-radius:2px;font-size:1rem;line-height:1.5}.btn-block{display:block}.btn-block+.btn-block{margin-top:5px}.btn.btn-outline{background-color:#fff}.btn.btn-blue.btn-outline{color:#5ba4e5}.btn.btn-red.btn-outline{color:#e25440}.btn.btn-green.btn-outline{color:#9fbb58}</style>
+<style>
+    .text a {
+        color: rgb(42, 50, 197)!Important;
+    }
+    
+    .text li {
+        font-family: 'MaisonNeue Book'!Important;
+        color: black!Important;
+    }
+        
+     .text {
+        color: #000!Important;
+    }
+    
+    .row-blog-links a {
+         color: white!Important;
+         font-size: 12px;
+    }
+    
+    .cta-temp a {
+        color: white!Important;
+        font-size: 12px;
+    }
+    
+  	article {
+      max-width: 860px!Important;
+    }
+    
+    .row-blog-links {
+        padding: 6%!Important;
+        background-color: rgb(242, 242, 242)!Important;
+        color: white;
+    }  
+    
+    .row-blog-links a {
+    color: black!Important;
+    font-size: 16px!Important;
+	}  
+
+    .row-blog-links ul {
+          font-size: 1.2rem!Important;
+          color: black!Important;
+          margin: 0;
+          padding: 0px;
+          font-weight: bold;
+    }
+    
+	* {
+  		box-sizing: border-box;
+	}
+
+	.column-blog-links {
+ 	 	float: left;
+ 	 	width: 50%;
+ 		padding-right: 0px;
+ 	 	padding-left: 10px;
+ 	 	padding-top: 15px;
+ 	 	padding-bottom: 15px;
+	}
+
+	.row-blog-links:after {
+  		content: "";
+  		display: table;
+  		clear: both;
+		}
+
+	@media screen and (max-width: 600px) {
+  		.column-blog-links {
+    	width: 100%;
+  	}
+	}
+    
+   .tag-header-container {
+    	background-color: rgb(202, 222, 234)!Important;
+	} 
+    
+    .newsletter-signup input[type="submit"] {
+    	background-color: rgb(42, 50, 197)!Important;
+    	border-radius: 27px;    
+    }
+    
+   	.tag-info h2 {
+    	color: black!Important;
+    }
+    
+    
+    .text h2 {
+    	margin: 2em 0 0.25em!important;    
+    	font-size: 32px!important;
+    }
+    .text h3 {
+    	margin: 1.5em 0 0.25em!important;
+    	font-size: 24px!important;    
+    }
+    
+    h3.cta-temp-heading {
+    	margin: 30px auto 20px auto!important;
+    	font-size: 32px!important;
+    }
+    
+    .blog-top-cta {
+        padding: 30px 30px!Important;
+    }
+    
+        
+	.tag-info p {
+    	color: black!Important;
+	}
+    
+</style>
+<div><div data-bgcolor="#002bf5" data-embedborderradius="24" data-embedcookiedays="10" data-embedexit="true" data-embedfontsize="14" data-embedscheduling="true" data-embedtimed="false" data-embedtimeformat="0" data-embedtimevalue="15" data-prop="outgrow-p" data-text="Take Our Quiz" data-textcolor="#ffffff" data-title="Career Quiz" data-type="outgrow-l" data-url="https://thinkful.outgrow.us/60da0ea60754057ad85dd356?q=1" id="60da0ea60754057ad85dd356"></div><script src="//dyv6f9ner1ir9.cloudfront.net/assets/js/nploader.js"></script><script>initIframe('60da0ea60754057ad85dd356');</script></div><style>.outgrow-l,.outgrow-b {display: none !important}</style>
+<script>
+
+        function loadQualified(values) {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://js.qualified.com/qualified.js?token=8qvavb50VwSXL0oN';
+            s.onload = function() {
+                window.skillsEvents.getCheggIds().then(function(results){
+                    window.qualified('identify', {
+                        clientid: results.chegg_visitor_id,
+                        rawrequest: JSON.stringify({
+                          referrer_url: values.referrer,
+                          landing_page_url: values.landingPage,
+                          request_url: window.location.href,
+                          client_id: results.chegg_visitor_id,
+                          first_touch_timestamp: values.firstTouchTimestamp || '',
+                        }),
+                    });
+                })
+            }
+            document.body.append(s)
+        }
+
+        function loadSegment() {
+            window.skillsEvents.TFAnalytics.load('nkoll4p35e');
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        function setCookie(name,value,days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            var host = location.host;
+            var domain = host.split(':')
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/; domain=" + domain[0];
+        }
+
+        var cookies = document.cookie;
+        // values will contain the cookie data if it exists, otherwise an empty object
+        var values = {};
+
+        try {
+            var cookie = getCookie('tf_lead_data')
+            if(cookie) {
+                // attempt to retrieve a cookie set from another splash page in the app
+                values = JSON.parse(decodeURIComponent(getCookie('tf_lead_data'))) || {};
+            }
+        } catch(err) {}
+
+        var s = document.createElement('script')
+        s.src = 'https://cdn.thinkful.com/skills_events.js'
+        s.onload = function () {
+
+            window.skillsEvents.oneTrust.onLoad()
+                .then(function(){
+                    // if the cookie does not already exist and the user came from some non thinkful url
+                    if(Object.keys(values).length === 0 && !document.referrer.includes('thinkful')) {
+                        values.referrer = document.referrer;
+                        values.landingPage = window.location.href;
+                        values.firstTouchTimestamp = new Date().toISOString();
+                        if(window.skillsEvents.oneTrust.canLoadForCategory(window.skillsEvents.oneTrust.CATEGORIES.PERFORMANCE)) {
+                            setCookie('tf_lead_data', encodeURIComponent(JSON.stringify(values)), 30);
+                        } else {
+                            window.skillsEvents.oneTrust.addOnConsentChangeHandler(function(){
+                                if(window.skillsEvents.oneTrust.canLoadForCategory(window.skillsEvents.oneTrust.CATEGORIES.PERFORMANCE)) {
+                                    setCookie('tf_lead_data', encodeURIComponent(JSON.stringify(values)), 30);
+                                }
+                            })
+                        }
+                    }
+
+                    if(window.skillsEvents.oneTrust.canLoadForCategory(window.skillsEvents.oneTrust.CATEGORIES.TARGETING)) {
+                        loadQualified(values);
+                    } else {
+                        window.skillsEvents.oneTrust.addOnConsentChangeHandler(function(){
+                            if(window.skillsEvents.oneTrust.canLoadForCategory(window.skillsEvents.oneTrust.CATEGORIES.TARGETING)) {
+                                loadQualified(values);
+                            }
+                        })
+                    }
+
+                    loadSegment();
+                })
+            
+
+            window.skillsEvents.init();
+            window.skillsEvents.client.updateViewState({
+                view_name: 'blog'
+            });
+            window.skillsEvents.setConfig({
+                landing_page_url: values.landingPage,
+                referrer_url: values.referrer,
+                first_touch_timestamp: values.firstTouchTimestamp,
+            })
+            window.skillsEvents.client.view();
+
+        }
+        document.body.appendChild(s)
+
+    </script>
+</body>
+</html>
+
+In [44]:
+allData = soup.find_all('h2')
+In [46]:
+newText = [title.text.strip() for title in allData]
+print(newText)
+
+['Data Science', 'Latest Stories', 'Data Science Interview Questions', 'Data Science Podcasts', 'Data Science Tools', 'Learn Data Science', 'Data Science School', 'Data Science Jobs', 'Data Scientist Resume', 'Data Science Skills', 'Data Science Training', 'Entry Level Jobs in Data Science', 'How to Get A Job in Data Science', 'Are Data Science Degrees Worth It?', 'Data Science Internships', 'Data Science Certificates', 'Data Science Cover Letter']
+In [61]:
+import pandas as pd
+In [67]:
+df=pd.DataFrame(newText)
+In [71]:
+df.to_csv(r'/Users/birkandurak/Desktop/doc.csv')
+In [ ]:
+ 
+*************
+
 									<p>Demo.</p>
 
 									<h4>Unit 4</h4>
