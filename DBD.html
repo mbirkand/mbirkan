@@ -82,10 +82,13 @@ Huxley et al (2020) discusses about the data wrangling processes such as data ex
 									<h4>Unit 3</h4>
 
 
-<p> In this chapter the aim was to scrape web for </p>
-
+<p> In this chapter the aim was to write a Python code to scrape web for useful information. I used BeautifulSoup library and pandas libraries for that purpose.
+Then scraped the blog of Thinkful.com and scraped their latest blog titles. After that scraping, information found was converted to a dataframe and finally parsed into a Json file.</p>
+<p> You can download results Json file <a href="/webScrapingResults.json">here</a> </p>
 									
-*************<p> Code starts here</p>*************
+************* 
+<p> Code starts here</p>
+*************
 									
 <p> from bs4 import BeautifulSoup</p>
 
@@ -108,15 +111,16 @@ Huxley et al (2020) discusses about the data wrangling processes such as data ex
 
 <p>df=pd.DataFrame(newText)</p>
 
-<p>df.to_csv(r'/Users/birkandurak/Desktop/doc.csv')</p>
+<p>df.to_json(r'/Users/birkandurak/Desktop/webScrapingResults.json')</p>
 
-*************<p> Code ends here</p>*************
+*************
+<p> Code ends here</p>
+*************
 									
-<p> You can download results csv <a href="/webScrapingResults.csv">here</a> </p>
+<p> You can download results csv <a href="/webScrapingResults.json">here</a> </p>
 
 
 
-									<p>Demo.</p>
 
 									<h4>Unit 4</h4>
 									<p>Demo.</p>
