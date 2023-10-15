@@ -84,32 +84,30 @@ Huxley et al (2020) discusses about the data wrangling processes such as data ex
 
 
 									
-In [23]:
-from bs4 import BeautifulSoup
-In [24]:
-import requests
-In [30]:
-url = "https://www.thinkful.com/blog/tag/data-science/"
 
-page = requests.get(url)
+<p> from bs4 import BeautifulSoup</p>
 
-soup = BeautifulSoup(page.text,'html')
-In [ ]:
- 
-In [44]:
-allData = soup.find_all('h2')
-In [72]:
-newText = [title.text.strip() for title in allData]
-print(newText)
+<p>import requests</p>
+<p>url = "https://www.thinkful.com/blog/tag/data-science/"</p>
 
-['Data Science\n\nData Science Interview Questions\n\n\nLearn how to tackle behavioral and technical questions, and ultimately breeze through even the most intense data science interview.', 'Data Science\n\nData Science Podcasts\n\n\nIf you’re interested in staying up to date with the latest developments in the field, a data science podcast might be the perfect way to catch the latest.', 'Data Science\n\nData Science Tools\n\n\nA big part of becoming a data scientist is understanding how to utilize these tools meaningfully in your role.', 'Data Science\n\nLearn Data Science\n\n\nThis fast-growing discipline helps companies to analyze raw data, and provides valuable information about consumers, the market, and employees.', 'Data Science\n\nData Science School\n\n\nWe took a broad look at the opportunities out there for data scientists, along with an overview of the key skills and concepts you’ll need to master on your mission to becoming a data expert.', 'Data Science\n\nData Science Jobs\n\n\nWe’ll list a few job search platforms and take you through some data scientist interview questions to help you get hired as a data scientist.', 'Data Science\n\nData Scientist Resume\n\n\nIf you’ve already got the skills you need to get hired, we’re here to help you through the next step: crafting the perfect data science resume.', 'Data Science\n\nData Science Skills\n\n\nIn this article, we’ll discuss what you need to learn to become a data scientist.', 'Data Science\n\nData Science Training\n\n\nWe’ve outlined some of the skills you need to learn as well as your course options to help you start your new career.', 'Data Science\n\nEntry Level Jobs in Data Science\n\n\nIf you’re considering putting your programming skills and analytical mindset to work, let’s walk through the steps of securing an entry-level data science position.', 'Data Science\n\nHow to Get A Job in Data Science\n\n\nThis article looks at the role of a data scientist, the different specializations within the field, and the skills needed to get hired.', 'Data Science\n\nAre Data Science Degrees Worth It?\n\n\nSelecting the right program for your specific needs can be a tough decision, so we’re to help you consider your options.', 'Data Science\n\nData Science Internships\n\n\nIf you have a passion for big data and are looking to kickstart your career in data science, read on.', 'Data Science\n\nData Science Certificates\n\n\nCertifications validate your skills, which further increases your chances of getting hired. Here we  list the top certification programs to help you thrive as a data scientist.', 'Data Science\n\nData Science Cover Letter\n\n\nA cover letter is sometimes even more important than a resume. So we’re going to guide you through the process of creating a strong data science cover letter.']
-In [73]:
-import pandas as pd
-In [74]:
-df=pd.DataFrame(newText)
-In [75]:
-df.to_csv(r'/Users/birkandurak/Desktop/doc.csv')
-In [ ]:
+<p>page = requests.get(url)</p>
+
+<p>soup = BeautifulSoup(page.text,'html')</p>
+
+<p>allData = soup.find_all('h2')</p>
+
+<p>newText = [title.text.strip() for title in allData]</p>
+<p>print(newText)</p>
+
+<code>['Data Science\n\nData Science Interview Questions\n\n\nLearn how to tackle behavioral and technical questions, and ultimately breeze through even the most intense data science interview.', 'Data Science\n\nData Science Podcasts\n\n\nIf you’re interested in staying up to date with the latest developments in the field, a data science podcast might be the perfect way to catch the latest.', 'Data Science\n\nData Science Tools\n\n\nA big part of becoming a data scientist is understanding how to utilize these tools meaningfully in your role.', 'Data Science\n\nLearn Data Science\n\n\nThis fast-growing discipline helps companies to analyze raw data, and provides valuable information about consumers, the market, and employees.', 'Data Science\n\nData Science School\n\n\nWe took a broad look at the opportunities out there for data scientists, along with an overview of the key skills and concepts you’ll need to master on your mission to becoming a data expert.', 'Data Science\n\nData Science Jobs\n\n\nWe’ll list a few job search platforms and take you through some data scientist interview questions to help you get hired as a data scientist.', 
+	'Data Science\n\nData Scientist Resume\n\n\nIf you’ve already got the skills you need to get hired, we’re here to help you through the next step: crafting the perfect data science resume.', 'Data Science\n\nData Science Skills\n\n\nIn this article, we’ll discuss what you need to learn to become a data scientist.', 'Data Science\n\nData Science Training\n\n\nWe’ve outlined some of the skills you need to learn as well as your course options to help you start your new career.', 'Data Science\n\nEntry Level Jobs in Data Science\n\n\nIf you’re considering putting your programming skills and analytical mindset to work, let’s walk through the steps of securing an entry-level data science position.', 'Data Science\n\nHow to Get A Job in Data Science\n\n\nThis article looks at the role of a data scientist, the different specializations within the field, and the skills needed to get hired.', 'Data Science\n\nAre Data Science Degrees Worth It?\n\n\nSelecting the right program for your specific needs can be a tough decision, so we’re to help you consider your options.', 'Data Science\n\nData Science Internships\n\n\nIf you have a passion for big data and are looking to kickstart your career in data science, read on.', 'Data Science\n\nData Science Certificates\n\n\nCertifications validate your skills, which further increases your chances of getting hired. Here we  list the top certification programs to help you thrive as a data scientist.', 'Data Science\n\nData Science Cover Letter\n\n\nA cover letter is sometimes even more important than a resume. So we’re going to guide you through the process of creating a strong data science cover letter.']</code>
+
+<p>import pandas as pd</p>
+
+<p>df=pd.DataFrame(newText)</p>
+
+<p>df.to_csv(r'/Users/birkandurak/Desktop/doc.csv')</p>
+
  
 
 *************
