@@ -151,10 +151,14 @@ A database solution will collect data and store it in a highly structured format
 The system will hold data in a structured format but the inputs into the system come from multiple sources in different formats. Data directly from National Rail regarding train services and stations is available in semi-structured machine-readable XML format. The legacy customer service data is held in an XLSX, a highly human-readable format that is not easily read by database applications and requires processing before being usable. The data from other internal organisational datasets, such as HR systems, is retrievable in CSV format and considered semi-structured because it does not have the same level of organisation as a database system (EMCS 2015; Olhurst 2012)
 The system is intended to follow best practice normal form rules of database design. This involves storing data in related groups per table to avoid duplicating rows within tables and repeating data across the system. The approach improves data consistency; avoids storing redundant data; and minimises insertion, deletion and modification errors as changes are made in one location (Harrington, 2009). The tables in the database each contain IDs, which operate as primary keys allowing association with related tables to join data across the system (Kazil & Jurmul, 2016). 
 </p>
+
+<img src="1.png" alt="1" width="500" height="333">
 									
 <p>The system will hold various data types within each table. IDs will be unique integer numbers. Varchar fields can hold strings of characters of various lengths, this will allow direct text entries as well as descriptive strings relating to data values to make them human-readable. Date Time fields record when key events occurred. (Harrington, 2009).								
 </p>
-									
+
+
+<img src="2.png" alt="2" width="500" height="333">									
 <h4>Data management Pipeline</h4>
 <p>Creating a robust data management pipeline is crucial precise handling of customer interactions and upholding customer satisfaction levels.
 At the data-capturing stage, a Representational State Transfer Application Programming Interface (REST API) can be used to access data from the National Rail public data feed. Data retrieval will be executed in Python, utilising the “requests” library to initiate an HTTP POST and GET requests to access required data. This data is saved in XML format for cleaning and processing (Wiki.openraildata.com, 2023). As National Rail's data feed is a trusted source, data is expected to be standardised and inherently reliable in terms of structural integrity. Additional sources to be integrated into the database, such as customer-initiated input and legacy data from spreadsheets, are likely to be unstructured and varied in data types.
@@ -165,6 +169,8 @@ Another critical process is standardisation of dates/ times. For this purpose, t
 
 <h4>Database Build</h4>
 <p>In the landscape of a data-driven world, designing and implementing an efficient database system is vital. The database model should address the challenges such as storage, user access and data manipulation, therefore our goal is to produce a scalable and well-structured database model which can serve the organization’s needs. The mission statement for the database is to monitor complaints originating from different channels which will allow the company to enhance its services and acquire valuable insights.</p>									
+<img src="3.png" alt="1" width="500" height="333">
+
 									
 <p>View integration approach can be used to manage multiple user views, acknowledging not all users need to manipulate the data. </p>
 <p>The following should be considered (Connolly et al., 2014): </p>
