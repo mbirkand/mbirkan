@@ -224,7 +224,146 @@ Considering all the terms of references, Amazon RDS (Relationship Database Servi
 									<p>Demo.</p>
 
 									<h4>Unit 12</h4>
-									<p>Demo.</p>
+<p>Final version of the team project can be found below;</p>
+
+<h4> Development Team Project: Project Report – Executive Summary </h4>
+ 
+<p>Richard Charnock, Birkan Durak and Lucy Ringwood </p>
+
+<h4>Introduction </h4>
+
+<p>This report provides an executive summary of the completed design and build of the customer contact management database for a UK rail company.</p>
+
+<h4>Data Collection Methods </h4>
+ 
+<p>There are 4 different input types for the database which are; Data forms (via web), Legacy data (spreadsheets), Data feed of National Rail Enquires and Data feed Internal HR Systems.  
+ 
+Application Programming Interfaces (APIs) are mechanisms for computer programs to communicate with each other (Connoly, 2015). To ensure data integration in a standardized format, utilizing APIs is crucial. Amazons REST API proves to be the more suitable option for 4 main reasons compared to its competitors. First, it is cost-effective, and it will seamlessly connect with the data of the customer and with the database, in a pre-formatted data format eliminating the need for data cleaning.  After integration, AWS provides real-time monitoring services and as security is a crucial consideration, given the sensitive nature of the information being transmitted, Amazon has ISO and CSA Star certifications. 
+ 
+Therefore, employing Amazon API Gateway as a unified solution is a reliable approach with seamless integration into its database. Figure 1. summarizes how Amazon API Gateway will be utilized between the database and data inputs.  </p>
+
+<img src="4.png" alt="4" width="500" height="333">									
+<img src="5.png" alt="5" width="500" height="333">	
+									
+
+<h4>Database Management System Selection </h4>
+ 
+<p>Using an efficient database is the core and our goal is to produce a well-structured and scalable database model. Model should address the challenges of storage, user access and data manipulation. Its mission is to oversee complaints from various sources, enabling the company to improve its services and gain valuable insights. </p>
+		
+<img src="6.png" alt="5" width="500" height="333">
+
+									
+<p>When the data has a clear structure and defined relationships between different entities, SQL databases, which are relational databases, are designed to handle such data efficiently. They use tables to store data and allow complex queries and transactions. Also SQL databases support complex queries making them better partners for data manipulation (Connolly, 2014). Therefore, given the nature of our dataset, SQL solutions are more suitable for our purposes. When evaluating database options like Amazon RDS, MySQL, and MongoDB, it's essential to consider the specific limitations and advantages of each system. MySQL, despite its open-source aspect, faces constraints due to Oracle's licensing, limiting its capabilities and lacking support for certain SQL frameworks. It was primarily designed for small to medium-sized web-based solutions with limited data involvement therefore, scalability is limited which can be a huge obstacle. MongoDB, while versatile, presents challenges. Its complexity in interpreting other query languages and its original design not optimized for relational data models can lead to performance slowdowns, especially in cases requiring relational data handling.  
+ 
+Considering all, Amazon RDS (Relational Database Service) emerges as the leading database management system with its ability to overcome the limitations of MySql and MongoDb. Its standout features include a user-friendly interface, flexibility, scalability, and cost-effectiveness, with the added benefit of "pay-as-you-go" pricing. Additionally, it allows effortless integration with SQL. Consequently, users have the opportunity to handle significant data workloads within a unified database environment. 
+ 
+Implementing a view integration approach for users is crucial. It simplifies access to complex data structures, ensuring users engage with the database only as necessary. This approach enhances security by enabling customizable access levels, enhancing overall data security. Furthermore, it optimizes performance by efficiently retrieving results, leading to faster query response times (Connolly, 2014). Major views table can be seen below which summarizes that customers will only have ability to do queries. Analysts will work on maintaining and reporting and managers will work only on maintaining part.  
+</p>									
+
+									
+<img src="7.png" alt="5" width="500" height="333">									
+									
+<h4>Data Wrangling </h4>
+
+<p>As this database contains existing data and has been implemented to facilitate expansion from new reporting mechanisms, an increasing volume of data can be expected to grow within it over time. Efficient data wrangling is a paramount phase in the data management lifecycle to ensure a more well-organised, valuable and memory-efficient format (McKinney, 2017). 
+
+Amazon's RDS provides a scalable and reliable database solution, but data arriving in different formats may lead to potential discrepancies in the database (AWS, n.d). To mitigate this, AWS Glue has been utilised for ETL (Extract, Transform, Load) processes to perform data preparation. While Glue can generate Python code for these processes, "auto-generated" code can be convoluted and less efficient than hand-written scripts, leading to increased execution time for large datasets (AWS Workshops (n.d.).
+
+Key transformation stages:
+</p>								
+
+
+<ul>
+  <li>Cleaning - handling missing values, removing duplicates and correcting inconsistencies (for example, postcode format when entered manually in the customer input forms). This stage ensures that the data is all standardised and the content of different datasets is managed consistently</li>
+  <li>Enrichment - adding industry-specific data to the dataset such as the regional office based on the customer’s location, priority codes based on the severity of the complaint and allocated team based on the complaint category (service issue/staff issue/ repairs and maintenance). </li>
+  <li>Transformation - structuring the data to align with the database schema.  </li>
+  <li>Formatting - ensuring all datatypes are consistent throughout, for example using the Python Datetime library to standardise all temporal data.  </li>
+</ul>
+
+<p>These tasks have been completed on the initial dataset upload but will also require execution on incoming data. In this instance, AWS Lambda allows for event-driven execution (Patterson, 2019). For example, when a daily upload of data is available in an S3 bucket, the Lambda function triggers the specified Glue job. This benefits the organisation as Lambda functions are a “pay-for-what-you-use” service and therefore costs are lower than running a server (Patterson, 2019).  
+
+A drawback of Lambda functions is that they have a maximum execution time of 15 minutes, so are not suited to extensive data processing. For scenarios such as annual strategic analysis reports, the AWS Batch tool will facilitate the processing of large volumes of data without needing to consider time to execute and computing resources (AWS, n.d). 
+</p>								
+									
+	
+<h4>Data structure and analysis</h4>
+<p>The new customer service platform collects data that is primarily structured data in the form of constrained text values, dates and some longer free text fields, different parts of the process form logical units such as customer information, involved staff and train services. Data processes with links and connections are very suited to being stored a SQL relational database (Kazil & Jarmul, 2016), therefore the system has been built as a Relational Database Management System (RDBMS) using SQL on the Amazon RDS service (AWS Amazon 2023). SQL based RDMS are a highly structured way of storing data in a manner which results in good data integrity and consistency. SQL allows fast access to data; is considered reliable and stable; can handle large volumes of data; and can scale as the size of data or variety of data grows (Welling & Thomson, 2004). 
+Data in the system has been grouped into relations (tables), with each containing attributes (columns) with an identified data type. Each tuple (row) within a table represents a distinct value that records part of the process and has a unique ID. This is used as an identifier for that row and as a primary key to create links in the database between connected relations (Harrington, 2009). Figure 2 below shows examples for two relations:
+</p>
+
+<img src="8.png" alt="8" width="500" height="333">										
+									
+<p>The database design principles of normal forms have been applied at the design and then build stage. Normalisation is intended to organise the system into tables which make logical sense and avoid duplicating data by storing the same data in many tables. (Chapple, 2022) This has the advantage of reducing storage use and improving data integrity. Updates to data need only occur in one table and will apply across the system. If the data was not normalised, an update to a data item such as a phone number in one location would not cascade across the system and member of staff may call the wrong person. Whilst Normalisation is best practice for RDMS, it would not be required for an object orientated solution such as NoSQL (Chapple, 2020) because the data is unstructured. Figure 3 below shows normalisation database design:</p>									
+									
+<img src="9.png" alt="8" width="500" height="333">		
+
+
+<p>Database Definition Language (DDL) is the element of SQL that allowed the normalised build of the database to be implemented. DDL allowed tables to be created; names and data types of attributes to be defined; column constraint rules to be set; and primary and foreign keys specified. (Harrington, 2009; Sarkar & Roychowdhury, 2019). This coding process is critical for integrity and data quality rules; it ensures the database links together and provides for the basic structure of the system. Figure 4 shows the creation of two tables:</p>
+
+<img src="10.png" alt="8" width="500" height="333">	
+
+
+<p>The new system is intended to enable new data insight about the customer experience in order to drive improvements to the delivery of the service. SQL ensures key data is held in logical structure with data redundancy and data quality issues designed out which aids data analysis by providing more reliable data. SQL uses Data Query Language (DQL) to allow flexible querying of the database to retrieve data to answer business questions. DQL allows bespoke data retrieval by joins between tables, aggregation and selection of specific data items. This allows ad-hoc queries to meet business needs or to create temporary views of the database to allow for regular reporting that can be displayed to users as part of the application (Connolly & Begg, 2014). Figure 5 is SELECT query which provides a list of open contact cases by department with customer details:
+</p>
+
+<img src="11.png" alt="8" width="500" height="333">	
+
+
+<p>Python can be used to connect directly to a RDBMS, this provides an option to undertake advanced analysis using a coding language which is highly flexible with libraries designed for Data Science tasks such as data wrangling, statistical analysis and data visualisation (Javin, 2021; Kazil & Jarmul, 2016). The RDMS is compatible with commercial data analysis software, for example AWS offer a suite of data analysis, visualisation and machine learning options (Amazon AWS, 2023). These packages often suitable for less technical users by enabling data analysis without coding, a good option for the organisations in a market where data science skills are highly sought after and not always readily available (World Economic Forum, 2020).
+</p>
+									
+<h4>Compliance</h4> 
+
+<p>With the organisation processing significant amounts of structured data, including personal information, compliance with the UK GDPR is non-negotiable. AWS' Identity and Access Management (IAM) is a pivotal tool, facilitating the granular control of user-access within the AWS environment and enables the principle of least privilege, where users are only given access necessary to perform their tasks (AWS, 2022). This thereby aligns with GDPR's requirements for robust access management (ICO, n.d).  
+
+The IAM Access Analyser provides insights into AWS resource permissions, helping ensure that only necessary and intended access is granted. Regularly reviewing IAM roles, policies, and permissions can align with the periodic access review requirement of ISO/IEC 27001 (ISO 27001 Guide, 2016). 
+
+Data has been stored in a way that allows for easy retrieval or deletion upon a user's request, in line with UK GDPR's access, rectification and erasure provisions (ICO, 2023). The nature of a relational database and having data stored in normal form means that records can be reliably reviewed and modified in the one table they are stored in and have the changes applied across the system from this one action.  
+</p>
+<h4>Conclusion </h4>
+
+<p>In light of the benefits and challenges discussed, the solution lies in a balanced approach. For instance, while AWS Glue can handle most ETL tasks, for highly specialised transformations, custom Python scripts are necessary. Similarly, for larger or long-running data jobs, considering services like AWS Batch over Lambda might be more suitable. 
+ 
+AWS and Python present a robust solution for data wrangling requirements, but it's imperative to understand the underlying challenges and address them proactively. The designed system, built with a clear understanding of its limitations and strengths, can efficiently support the goals of enhanced customer complaint management. 
+
+A relational database built with SQL is highly suited to the collection of the type of structured data in a logical process collected as part of this solution. Alternative options using NoSQL would be an option if the collection included unstructured data such as images, or if the volume of data had far greater (Keita, 2022), the priority of collecting data in a structured format made a SQL appropriate. This approach may restrict database scalability in the future to handle big data which is more varied, for example incorporating images or high volume and velocity data from Internet of Things (IoT) devices.  
+A SQL RDMS provides a range of data analysis options which can scale based on the technical skills and needs of the organisation. Direct SQL queries are highly flexible for retrieving data. Connectivity with Python opens up the possibility of applying advanced analytics techniques. RDMS are also suited to commercial data analysis software which provide capability for staff of varied technical ability. This meets the requirement to enable far more data insight than would have been possible under the legacy platform.
+</p>
+									
+
+<h4>References </h4>
+
+<p>AWS. (n.d). What Is AWS Glue?. Amazon Web Services, Inc. Available at: https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html [Accessed 21 October 2023].  </p>
+
+<p>AWS. (n.d). Batch-based architecture. In: AWS Well-Architected. Available at: https://docs.aws.amazon.com/wellarchitected/latest/high-performance-computing-lens/batch-based-architecture.html [Accessed 21 October 2023].  </p>
+
+<p>AWS Amazon (2023). What is a Relational Database? Available from: https://aws.amazon.com/rds/aurora/ [Accessed 20 October 2023]  </p>
+<p>AWS Amazon (2023). Amazon Aurora Unparalleled high performance and availability at global scale with full MySQL and PostgreSQL compatibility. Available from: https://aws.amazon.com/relational-database/ [Accessed 20 October 2023]  </p>
+<p>AWS Amazon (2023). Analytics on AWS. Fastest way to get answers from all your data to all your users. Available from: https://aws.amazon.com/big-data/datalakes-and-analytics/ [Accessed 20 October 2023]  </p>
+<p>AWS (2022) Security best practices in IAM. Available at: https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege. [Accessed 21 October 2023].  </p>
+
+<p>AWS Lambda, Amazon API Gateway, and services from Amazon Web Services. 1st edition. Birmingham, England ;: Packt.  </p>
+
+<p>AWS Workshops (n.d). AWS Glue Immersion day. Available at: https://catalog.us-east-1.prod.workshops.aws/workshops/ee59d21b-4cb8-4b3d-a629-24537cf37bb5/en-US/lab6/etl/advanced-transform [Accessed 21 October 2023].  </p>
+<p>Patterson, S. (2019) Learn AWS serverless computing : a beginner’s guide to using  </p>
+
+<p>Chapple, M.(2022) Database Normalization Basics, Available from: https://www.lifewire.com/database-normalization-basics-1019735 [Accessed 20 October 2023]  </p>
+<p>Chapple, M. (2023) Should I Normalize My Database? Available from: https://www.lifewire.com/should-i-normalize-my-database-1019730 [Accessed 20 October 2023]  </p>
+<p>Connolly, T. M. & Begg, C. E. (2014) Database Systems: A Practical Approach to Design, Implementation and Management. 6th ed. Harlow: Pearson Education Limited.  </p>
+<p>Harrington, J. L. (2009) Relational database design and implementation clearly explained. 3rd ed. Amsterdam: Morgan Kaufmann/Elsevier.  </p>
+<p>ICO (n.d) A guide to data security. Available at: https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/security/a-guide-to-data-security/#14. [Accessed 21 October 2023].  </p>
+
+<p>ISO 27001 Guide (2016) ISO 27001 Review User Access Rights Requirements. Available at: https://iso27001guide.com/iso-27001-review-user-access-rights-requirements-iso27001-guide-iso27001-guide.html [Accessed 21 October 2023].  </p>
+
+<p>ICO (2023) A guide to individual rights. Available at: https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/individual-rights/ [Accessed 21 October 2023]. </p>
+
+<p>Javin.P. (2021) Top 5 Reasons to Learn Python for Data Science, Machine Learning, and AI in 2023?  Available at: https://medium.com/javarevisited/5-reasons-to-learn-python-for-data-science-16a9d4c44d6d [Accessed 20 October 2023]  </p>
+<p>Kazil, J. & Jarmul, K. (2016). Data Wrangling with Python. 1st ed. Sebastopol, CA: O’Reilly.   </p>
+<p>Keita, Z. (2022) NoSQL Databases: What Every Data Scientist Needs to Know. Available at: https://www.datacamp.com/blog/nosql-databases-what-every-data-scientist-needs-to-know [Accessed 21 October 2023]  </p>
+<p>McKinney, W. (2017). Python for Data Analysis: Data Wrangling with Pandas, NumPy, and IPython (2nd ed.). O'Reilly Media.  </p>
+
+<p>Sarkar, T. & Roychowdhury, S. (2019) Data Wrangling with Python. 1st ed. Packt.  </p>
+<p>World Economic Forum. (2020) The Future of Jobs Report 2020. Available from: https://www.weforum.org/reports/the-future-of-jobs-report-2020 [Accessed 21 October 2023] </p>
 
 									
 									<h2>Individual Contributions</h2>
