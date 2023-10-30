@@ -136,7 +136,71 @@ The steps begins with capturing the raw data yet as raw data often comes with im
 									<p>In Unit 5, I have used xlrd library to read the excel file of Unicef and Pandas library to transform the data of Unicef to derive meaningful results.</p>
 
 									<h4>Unit 6</h4>
-									<p>Demo.</p>
+									<p>
+Here is our group project report for our first assignment. 
+
+
+							<p>Development Team Project: Project Report – Database Design </p>
+
+<p>Richard Charnock, Birkan Durak and Lucy Ringwood </p>
+
+<h4>Objective</h4>
+<p>A UK rail company has commissioned a new database system to track contact from customers through to resolution and allow data analysis to help identify areas requiring service improvement. It is intended to record contact from various communication methods including direct customer input into the company’s website will require validation and cleaning. Open-source data feeds from National Rail should be integrated to aid reliable categorization of the data. The system is expected to replace and incorporate a spreadsheet currently used to log contact.
+<h4>Logical Design</h4> 
+A database solution will collect data and store it in a highly structured format, making it accessible for users managing cases or searching the system, aiding data retrieval for analysis (Bookshear & Brylow, 2020). The database is intended to collect data on public contact flowing into the organisation and store an end-to-end view of the type and subject; organisational ownership of contact; and outcomes/ resolutions of the contact.
+The system will hold data in a structured format but the inputs into the system come from multiple sources in different formats. Data directly from National Rail regarding train services and stations is available in semi-structured machine-readable XML format. The legacy customer service data is held in an XLSX, a highly human-readable format that is not easily read by database applications and requires processing before being usable. The data from other internal organisational datasets, such as HR systems, is retrievable in CSV format and considered semi-structured because it does not have the same level of organisation as a database system (EMCS 2015; Olhurst 2012)
+The system is intended to follow best practice normal form rules of database design. This involves storing data in related groups per table to avoid duplicating rows within tables and repeating data across the system. The approach improves data consistency; avoids storing redundant data; and minimises insertion, deletion and modification errors as changes are made in one location (Harrington, 2009). The tables in the database each contain IDs, which operate as primary keys allowing association with related tables to join data across the system (Kazil & Jurmul, 2016). 
+</p>
+									
+<p>The system will hold various data types within each table. IDs will be unique integer numbers. Varchar fields can hold strings of characters of various lengths, this will allow direct text entries as well as descriptive strings relating to data values to make them human-readable. Date Time fields record when key events occurred. (Harrington, 2009).								
+</p>
+									
+<h4>Data management Pipeline</h4>
+<p>Creating a robust data management pipeline is crucial precise handling of customer interactions and upholding customer satisfaction levels.
+At the data-capturing stage, a Representational State Transfer Application Programming Interface (REST API) can be used to access data from the National Rail public data feed. Data retrieval will be executed in Python, utilising the “requests” library to initiate an HTTP POST and GET requests to access required data. This data is saved in XML format for cleaning and processing (Wiki.openraildata.com, 2023). As National Rail's data feed is a trusted source, data is expected to be standardised and inherently reliable in terms of structural integrity. Additional sources to be integrated into the database, such as customer-initiated input and legacy data from spreadsheets, are likely to be unstructured and varied in data types.
+An initial step in the data-cleaning phase is to transform the data into a format suitable for database insertion. After identifying headers to establish a foundational structure, the “ElementTree” library can be used to parse the data. A loop can be used to leverage these headers to segregate the data, facilitating creation of a list of dictionaries to create a Pandas dataframe (Pandey, 2021). This step also aids in implementing data-mapping techniques, ensuring accurate matching between primary and foreign keys, particularly when merging tables from diverse and formats – XML, XLSX, CSV. 
+Regarding anomalies, null values are most likely to be frequently encountered. While transforming XML data, the loop can also be used to replace blank values with a designated placeholder—typically "none"—to signify absence of content.
+Another critical process is standardisation of dates/ times. For this purpose, the Python “datetime” library can be implemented (Kazil and Jarmul, 2016). All datetime data should be converted into the same format, e.g. ISO 8601 (PyNative, 2022). Standardising timestamps is vital for maintaining data integrity, ensuring subsequent analyses are accurate, thereby guiding decision-making more effectively.
+</p>
+
+<h4>Database Build</h4>
+<p>In the landscape of a data-driven world, designing and implementing an efficient database system is vital. The database model should address the challenges such as storage, user access and data manipulation, therefore our goal is to produce a scalable and well-structured database model which can serve the organization’s needs. The mission statement for the database is to monitor complaints originating from different channels which will allow the company to enhance its services and acquire valuable insights.</p>									
+									
+<p>View integration approach can be used to manage multiple user views, acknowledging not all users need to manipulate the data. 
+The following should be considered (Connolly et al., 2014): 
+Usability: Ensuring user friendliness for both technical and non-technical staff.
+Performance and functionality: Automating tasks, filtering, forecasting and visualizing should be possible without performance issues. Integration with legacy spreadsheets is important.
+Scalability: Growing user base should be considered.
+Networking and shared access information: Supporting concurrent access for at least 5 analysts.
+Security: Prioritizing secure storage of sensitive data. 
+Backup and recovery: Implementing daily automatic backups.
+Legal issues: System must adhere to legal regulations.
+Visualization and reporting: Transforming data into insightful reports.
+Cost: Cost should align with functionality.
+
+Considering all the terms of references, Amazon RDS (Relationship Database Service) emerges as the prominent database management system. It stands out for its user-friendly interface, flexibility, scalability and cost-effectiveness, offering the advantage of “paying on demand” for utilized resources. Moreover, it facilitates easy access to legacy databases such as mySql or Oracle. Therefore users will have a chance to process the substantial data workloads in a single unified database.
+</p>
+
+<h4>Conclusion</h4>									
+
+
+<p>The new database system aims to revolutionise customer interaction tracking and service improvement. Utilising best practices, it integrates data from various sources—National Rail feeds, legacy spreadsheets, and other organisational datasets—while addressing crucial aspects like usability, scalability, and security. The data management pipeline ensures accurate and efficient handling of the data, transforming disparate formats into a relational database. Opting for Amazon RDS as the database management system aligns with the company's needs for a user-friendly, scalable, and cost-effective solution. This comprehensive approach enables the company to enhance its customer service significantly and make data-driven decisions.</p>
+									
+<h4>References</h4>
+Brookshear, J. G. & Brylow, D. (2020) Computer science : an overview. Thirteenth, global edition. New York, New York: Pearson.
+EMCS. (2015) Data Science and Big Data Analytics: Discovering, Analyzing, Visualizing and Presenting Data. Wiley Professional Development. Available via VitalSource Bookshelf [Accessed 17 September 2023]
+Harrington, J. L. (2009) Relational database design and implementation clearly explained. 3rd ed. Amsterdam : Morgan Kaufmann/Elsevier.
+Kazil, J. & Jarmul, K. (2016) Data Wrangling with Python. 1st ed. Sebastopol, CA: O’Reilly.
+National Rail (2023) National Rail data feeds. Available at: https://www.nationalrail.co.uk/developers/ [Accessed 17 September 2023] 
+Ohlhorst, F.J. (2012) Big Data Analytics: Turning Big Data into Big Money. Wiley Professional Development.
+Wiki.openraildata.com. (2023) KnowledgeBase. Available from: https://wiki.openraildata.com/KnowledgeBase [Accessed 16 September 2023)
+Pandey, P (January 19, 2021) Extracting information from XML files into a Pandas dataframe, Towards Data Science. Available from: https://medium.com/p/11f32883ce45 [Accessed 16 September 2023).
+PyNative.com (2022), Python ISO 8601 Datetime, Available from: https://pynative.com/python-iso-8601-datetime/ [Accessed 17 September 2023)
+Connolly, Thomas, et al. (2014) Database Systems: a Practical Approach to Design, Implementation, and Management, Global Edition, Pearson Education, Limited, 2014. ProQuest Ebook Central, [Accessed 17 September 2023]
+							
+									
+									
+									</p>
 
 									<h4>Unit 7</h4>
 									<p>Demo.</p>
