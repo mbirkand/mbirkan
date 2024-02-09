@@ -200,20 +200,171 @@ percentage_women <- mean(Data$Sex == 2, na.rm = TRUE) * 100
 maxEducation <- sort(unique(Data$topqual3, na.rm = TRUE))
 print(maxEducation)
 
-
-#What is percentage of divorced and separated people?
-  
-#This includes non responders to the question as well.
+# What is the percentage of divorced and separated people?
 numberofDivorced <- sum(Data$marstatc == 4, na.rm = TRUE)
 percentageDivorced <- round(((numberofDivorced/TotalNumber)*100),digits=2)
 cat("Percentage Divorced:",percentageDivorced)
 
-numberofSeperated <- sum(Data$marstatc == 5, na
+numberofSeparated <- sum(Data$marstatc == 5, na.rm = TRUE)
+percentageSeparated <- round(((numberofSeparated/TotalNumber)*100),digits=2)
+cat("Percentage Separated:", percentageSeparated)
 
+# Omitted NA
+percentageDivorced <- round((mean(Data$marstatc == 5, na.rm = TRUE) * 100), digits=2)
+cat("Percentage Divorced NA Omitted:", percentageDivorced)
 
+percentageSeparated <- round((mean(Data$marstatc == 4, na.rm = TRUE) * 100), digits=2)
+cat("Percentage Separated NA Omitted:", percentageSeparated)
 
+# Find the mean, median, mode, minimum, maximum, range, and standard deviation of household size, BMI, and age at the last birthday.
+household_size_stats <- summary(Data$HHSize)
+household_size_mode <- Getmode(Data$HHSize)
+household_size_range <- range(Data$HHSize, na.rm = TRUE)
+household_size_sd <- sd(Data$HHSize, na.rm = TRUE)
 
+# Calculate descriptive statistics for BMI
+BMI_stats <- summary(Data$bmival)
+BMI_mode <- Getmode(Data$bmival)
+BMI_range <- range(Data$bmival, na.rm = TRUE)
+BMI_sd <- sd(Data$bmival, na.rm = TRUE)
 
+# Calculate descriptive statistics for age at the last birthday
+age_stats <- summary(Data$Age)
+age_mode <- Getmode(Data$Age)
+age_range <- range(Data$Age, na.rm = TRUE)
+age_sd <- sd(Data$Age, na.rm = TRUE)
+
+# Print results
+cat("Household Size Statistics\n")
+cat("Mean:", household_size_stats["Mean"], "\nMedian:", household_size_stats["Median"], "\nMode:", household_size_mode, "\nMin:", household_size_range[1], "\nMax:", household_size_range[2], "\nRange:", diff(household_size_range), "\nSD:", household_size_sd, "\n\n")
+
+cat("BMI Statistics\n")
+cat("Mean:", BMI_stats["Mean"], "\nMedian:", BMI_stats["Median"], "\nMode:", BMI_mode, "\nMin:", BMI_range[1], "\nMax:", BMI_range[2], "\nRange:", diff(BMI_range), "\nSD:", BMI_sd, "\n\n")
+
+cat("Age at Last Birthday Statistics\n")
+cat("Mean:", age_stats["Mean"], "\nMedian:", age_stats["Median"], "\nMode:", age_mode, "\nMin:", age_range[1], "\nMax:", age_range[2], "\nRange:", diff(age_range), "\nSD:", age_sd, "\n")
+
+# Inferential Statistics
+
+# Run a significance test to find out which gender drinks more alcohol.
+# Male Drinkers
+MaleDrinkers <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==1, dnnow==1)
+TotalMaleDrinkers <- MaleDrinkers %>% summarise(n_distinct(pserial))
+print(TotalMaleDrinkers)
+
+MaleDrinkersRatio <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==1)
+
+MalePercAlcohol<- mean(MaleDrinkersRatio$dnnow == 1, na.rm = TRUE) * 100
+cat("Percentage of Males who drink alcohol:",MalePercAlcohol)
+
+# Male Non-Drinkers
+MaleNonDrinkers <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==1, dnnow==2)
+TotalMaleNonDrinkers <- MaleNonDrinkers %>% summarise(n_distinct(pserial))
+print(TotalMaleNonDrinkers)
+
+MaleNonDrinkersRatio <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==1)
+
+MalePercNonAlcohol<- mean(MaleNonDrinkersRatio$dnnow == 2, na.rm = TRUE) * 100
+cat("Percentage of Males who do not drink alcohol:",MalePercNonAlcohol)
+
+# Female Drinkers
+FemaleDrinkers <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==2, dnnow==1)
+TotalFemaleDrinkers <- FemaleDrinkers %>% summarise(n_distinct(pserial))
+print(TotalFemaleDrinkers)
+
+FemaleDrinkersRatio <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==2)
+
+FemalePercAlcohol<- mean(FemaleDrinkersRatio$dnnow == 1, na.rm = TRUE) * 100
+cat("Percentage of Females who drink alcohol:",FemalePercAlcohol)
+
+# Female Non-Drinkers
+FemaleNonDrinkers <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==2, dnnow==2)
+TotalNonFemaleDrinkers <- FemaleNonDrinkers %>% summarise(n_distinct(pserial))
+print(TotalNonFemaleDrinkers)
+
+FemaleNonDrinkersRatio <- Data %>%
+  select(Sex,dnnow,pserial) %>%
+  filter(Sex==2)
+
+FemaleNonPercAlcohol<- mean(FemaleNonDrinkersRatio$dnnow == 2, na.rm = TRUE) * 100
+cat("Percentage of Females who do not drink alcohol:",FemaleNonPercAlcohol)
+
+# Chi-squared test for categorical data
+
+TestData <- Data %>%
+  filter(dnnow==1 | dnnow==2)
+
+table_gender_alcohol <- table(TestData$Sex, TestData$dnnow)
+
+# Now, run the Chi-squared test and print
+chi_squared_test <- chisq.test(table_gender_alcohol)
+print(chi_squared_test)
+
+# Frequency table
+region_drink_counts <- TestData %>%
+  group_by(gor1) %>%
+  summarise(
+    Drinkers = sum(dnnow == 1),
+    NonDrinkers = sum(dnnow == 2),
+    Total = n()
+  ) %>%
+  mutate(
+    PercentageDrinkers = (Drinkers / Total) * 100,
+    PercentageNonDrinkers = (NonDrinkers / Total) * 100
+  )
+
+# Print the result
+print(region_drink_counts)
+
+# Run a significance test to find out which region drinks the most alcohol.
+table_region_alcohol <- table(TestData$gor1, TestData$dnnow)
+chisq_result <- chisq.test(table_region_alcohol)
+
+# Check if expected frequencies meet assumptions for chi-squared test
+print(chisq_result$expected)
+
+# If all expected frequencies are greater than 5, we can interpret the chi-squared result
+print(chisq_result)
+
+# Investigate whether there is a statistical difference between men and women on the following variables:
+
+# Valid height.
+height_t_test <- t.test(htval ~ Sex, data = Data)
+
+# Print the results for height
+print(height_t_test)
+
+# Valid weight.
+# Perform t-test for weight
+weight_t_test <- t.test(wtval ~ Sex, data = Data)
+
+# Print the results for weight
+print(weight_t_test)
+
+# What is the correlation between whether a person drinks nowadays, total household income, age at last birthday and gender?
+# Select the relevant columns from the dataframe
+selected_data <- TestData[, c("dnnow", "totinc", "Age", "Sex")]
+
+# Calculate the correlation matrix
+correlation_matrix <- cor(selected_data, use = "complete.obs", method = "pearson")
+
+# Print the correlation matrix
+print(correlation_matrix)
+</code>
 
 
 
