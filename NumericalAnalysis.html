@@ -83,15 +83,18 @@
     <p>Statistical analysis will be calculated using R, as R can perform complex statistical computations easily.</p>
 
     <h2>Significance test to find out which gender drinks more alcohol</h2>
-
+    <p><img src="num1.png" alt="2" width="500" height="333"></p>
+    <p><img src="num2.png" alt="2" width="500" height="333"></p>
     <p>Total in the sample: 10617</p>
     <p>Total answered to the drinking status question yes or no: 8534 people</p>
-    <p>There is a statistically significant difference in alcohol consumption between males and females, with males being more likely to drink alcohol than females. </p>
+   <p><img src="num3.png" alt="2" width="500" height="333"></p>   
+<p>There is a statistically significant difference in alcohol consumption between males and females, with males being more likely to drink alcohol than females. </p>
     <p>The extremely small P-value indicates that this result is highly unlikely to have occurred by chance, meaning that the difference in alcohol consumption rates between genders is statistically significant.</p>
     <p>Given the context of the contingency table, where a higher percentage of males (83.9%) drink alcohol compared to females (74.4%), the Chi-squared test supports the conclusion that gender is associated with alcohol consumption, and that this association is strong and statistically significant.</p>
 
     <h2>Significance test to find out which region drinks more alcohol</h2>
-
+   <p><img src="num4.png" alt="2" width="500" height="333"></p>
+   <p><img src="num5.png" alt="2" width="500" height="333"></p>
     <p>High Chi-squared statistic and the p-value being less than 2.2e-16, it can be concluded with a high degree of confidence that there is a significant association between the region and drinking status.</p>
     <p>P-value < 2.2e-16: This extremely small p-value indicates that the probability of observing a Chi-squared statistic as extreme as 98.53 under the null hypothesis (which states there is no association between region and drinking status) is virtually zero. This leads to reject the null hypothesis and conclude there is a statistically significant association between region and drinking status.</p>
     <p>According to the provided table, the South-West region has the highest proportion of drinkers at 83.9%. The East Midlands follows closely with a ratio of 82.1%, while both the South-East and the East of England regions are tied for the third-highest ratio at 81.6%. London registers the smallest percentage of drinkers relative to the other regions.</p>
@@ -104,6 +107,57 @@
     <p>Results:</p>
     <p>t = 25.197, df = 6964.1, p-value < 2.2e-16</p>
 
+
+
+	        <h2>Statistical Analysis Results</h2>
+
+    <h3>Comparison of Height between Genders</h3>
+    <p>Sample estimates: The sample mean for group 1 (males) is 167.3928, and the sample mean for group 2 (females) is 157.2054. This indicates that the average height for group 1 is higher than that of group 2.</p>
+    <p>The t-test suggests a statistically significant difference in height between the two groups, with group 1 having a higher mean height than group 2. The difference in the mean heights is approximately between 9.39 and 10.98 units. Males in this sample are, on average, significantly taller than females.</p>
+
+    <h3>Comparison of Weight between Genders</h3>
+    <p>To compare different groups; Two Sample (Welch) t-test is appropriate.</p>
+    <p>H0: There is no connection between sex and weight.<br>H1: There is connection between sex and weight.<br>t = 17.847, df = 7777, p-value &lt; 2.2e-16</p>
+    <p>alternative hypothesis: true difference in means between group 1 and group 2 is not equal to 0<br>95 percent confidence interval:<br>8.463743 - 10.552436</p>
+    <p>Sample estimates:<br>mean in group 1: 74.26612<br>mean in group 2: 64.75803</p>
+    <p>t = 17.847: The large value here suggests a substantial difference between the groups. <br>p-value &lt; 2.2e-16: This indicates that the test found a statistically significant difference between the two groups.</p>
+    <p>The mean weight for males is 74.26612, and for females is 64.75803. This indicates that the average weight for males is higher.</p>
+    <p>There is a significant difference in the valid weight between the two groups. The average weight of males exceeds that of females by an amount that lies in the interval between approximately 8.46 and 10.55. The statistical test is highly significant, strongly suggesting that this difference is not due to random chance.</p>
+
+    <h3>Correlation Analysis</h3>
+    <p>Positive Correlation: Indicates that as one variable increases, the other variable tends to increase as well.</p>
+    <p>Negative Correlation: Indicates that as one variable increases, the other variable tends to decrease.</p>
+    <p>Magnitude of Correlation Coefficient: Values closer to 1 or -1 indicate a stronger correlation, while values closer to 0 indicate a weaker correlation.</p>
+    <p>Drinking status and Sex (0.116): This is a weak to moderate positive correlation, suggesting that there is a relationship between sex and drinking status, with one sex possibly being more inclined to drink than the other. The direction (which sex drinks more) cannot be determined from the correlation coefficient alone.</p>
+    <p>Income and Drinking Status (0.07): A weak positive correlation.</p>
+    <p>Age and Sex (-0.0159): A very weak negative correlation, suggesting a negligible relationship between age and sex, meaning age distribution is roughly the same across sexes.</p>
+    <p>The strongest correlation in this matrix involves Sex and Drinking Status, suggesting a modest association between gender and drinking status. However, all relationships are relatively weak, indicating that none of these variables strongly predict the others within this dataset. It's important to remember that correlation does not imply causation.</p>
+
+    <h3>Key Results</h3>
+    <ul>
+        <li>Sample size: 10,617 individuals, alcohol consumption is approximately 78.6%</li>
+        <li>Male drinkers are higher and statistically significant results for alcohol for gender</li>
+        <li>Highest proportion of drinkers in South-West (83.9%), followed by East Midlands (82.1%), South-East and East of England (81.6% each), and lowest in London</li>
+        <li>Weak to moderate positive correlation between sex and drinking status (0.116)</li>
+        <li>Weak positive correlation between income and drinking status (0.0732)</li>
+        <li>Very weak negative correlation between age and sex (-0.0159)</li>
+    </ul>
+
+    <h3>References</h3>
+    <ol>
+        <li><a href="https://digital.nhs.uk/data-and-information/publications/statistical/health-survey-for-england/2021/part-3-drinking-alcohol#alcohol-and-health">NHS Digital: Health Survey for England</a></li>
+        <li><a href="https://digital.nhs.uk/data-and-information/publications/statistical/statistics-on-alcohol/2021/part-1">NHS Digital: Statistics on Alcohol</a></li>
+        <li>Health and Social Care Information Centre. Statistics on Alcohol: England, 2012, Leeds 2012 <a href="www.ic.nhs.uk/statistics-and-data-collections/health-and-lifestyles/alcohol/statistics-on-alcohol-england-2012-[ns]">(source)</a></li>
+        <li>Tackling Harmful Alcohol Usage in the United Kingdom, Country Note, (n.d) <a href="https://www.oecd.org/unitedkingdom/Tackling-Harmful-Alcohol-Use-United-Kingdom-en.pdf">OECD Report</a></li>
+        <li>Robinson, M., Shipton, D., Walsh, D. et al. Regional alcohol consumption and alcohol-related mortality in Great Britain: novel insights using retail sales data. BMC Public Health 15, 1 (2015). <a href="https://doi.org/10.1186/1471-2458-15-1">DOI</a></li>
+    </ol>
+
+    <h3>Recommendations</h3>
+    <ul>
+        <li><strong>Public Health Initiatives:</strong> With a high percentage of the sample reporting alcohol consumption, public health campaigns could focus on educating about the risks associated with alcohol use. These initiatives could be tailored to regions with higher alcohol consumption rates, such as the South-West.</li>
+        <li><strong>Targeted Interventions:</strong> Since men report higher alcohol consumption than women, interventions could be specifically designed for men, perhaps incorporating activities or locations where they are more likely to be receptive to messaging about reducing alcohol intake.</li>
+        <li><strong>Research on Income and Drinking Patterns:</strong> Although the correlation between total income and drinking status was weak, it could be insightful for further research to explore this relationship in more depth, potentially to inform policy decisions related to alcohol taxation and pricing.</li>
+    </ul>
 
     <!-- Statistical Analysis Code -->
     <h2>R Code</h2>
