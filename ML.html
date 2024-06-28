@@ -68,71 +68,7 @@
 									<h2>End of Module Assignment</h2>	
 									</header>
 							
-		<!-- Buradan başladık -->						
-			    <style>
-	body {
-            color: #000; /* Ensure the default text color is not white */
-        }
-        pre {
-        pre {
-            background-color: #f4f4f4;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 10px;
-            overflow: auto;
-        }
-        code {
-            font-family: 'Courier New', Courier, monospace;
-        }
-    </style>
-
-		    <pre><code>
-import numpy as np
-
-def gradient_descent(x, y, iterations, learning_rate):
-    m_curr = b_curr = 0
-    n = len(x)
-    cost_history = []
-
-    for i in range(iterations):
-        y_predicted = m_curr * x + b_curr
-        cost = (1/n) * sum([val**2 for val in (y - y_predicted)])
-        cost_history.append(cost)
-        md = -(2/n) * sum(x * (y - y_predicted))
-        bd = -(2/n) * sum(y - y_predicted)
-        m_curr = m_curr - learning_rate * md
-        b_curr = b_curr - learning_rate * bd
-        print("m {}, b {}, cost {} iteration {}".format(m_curr, b_curr, cost, i))
-
-    return cost_history
-
-# Example usage:
-x = np.array([1, 2, 3, 4, 5])
-y = np.array([5, 7, 9, 11, 13])
-
-# Initialize learning rates and iteration numbers
-learning_rates = [0.001, 0.01, 0.05, 0.1]
-iterations_list = [50, 100, 200]
-
-best_learning_rate = None
-best_iterations = None
-min_cost = float('inf')
-
-for learning_rate in learning_rates:
-    for iterations in iterations_list:
-        print(f"\nTesting with {iterations} iterations and learning rate {learning_rate}")
-        cost_history = gradient_descent(x, y, iterations, learning_rate)
-        final_cost = cost_history[-1]
-        if final_cost < min_cost:
-            min_cost = final_cost
-            best_learning_rate = learning_rate
-            best_iterations = iterations
-        print(f"Final cost: {final_cost}")
-
-print("\nBest parameters:")
-print(f"Learning rate: {best_learning_rate}, Iterations: {best_iterations}, Minimum cost: {min_cost}")
-    </code></pre>
-							
+					
 								
 		<!-- Buradan başladık -->							
 <p style="text-align: justify;">This report shows the progression of my learning and application of machine learning principles throughout the module. It encompasses artefacts illustrating my comprehension of the challenges encountered during the Machine Learning module. The report further includes reflections on my individual contributions, collaborative efforts, and the overall impact on my professional and personal development.</p>
